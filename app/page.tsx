@@ -31,8 +31,8 @@ function Navbar() {
   );
 }
 
-function BioAbout({ children, hexcolor }: { children: React.ReactNode; hexcolor: string }) {
-  let warnain: string = `flex flex-row h-3/5 bg-[${hexcolor}]`;
+function BioAbout() {
+  const warnain: string = `flex flex-row h-3/5 bg-[#32CD32]`;
   return (
     <div className={warnain}>
       <div className="basis-2/3 h-full bg-[#FA8072] rounded-3xl px-4 py-8 mx-4">
@@ -43,8 +43,16 @@ function BioAbout({ children, hexcolor }: { children: React.ReactNode; hexcolor:
           to learn from the best in the field.
         </div>
       </div>
-      <div className="basis-1/3 h-full bg-[#FA8072] rounded-3xl px-4 py-8 mx-4 flex items-center justify-center">
-        <div className="my-auto bg-[#4B382A] rounded-full w-5/6 h-5/6"></div>
+      <div className="my-auto bg-[#4B382A] rounded-full w-52 h-52 flex items-center justify-center">
+        <div className="rounded-full overflow-hidden w-full h-full">
+          <Image
+            src="/traveler.jpg"
+            width={208}
+            height={208}
+            alt="Picture of the author"
+            className="object-cover w-full h-full"
+          />
+        </div>
       </div>
     </div>
   );
@@ -53,7 +61,7 @@ function BioAbout({ children, hexcolor }: { children: React.ReactNode; hexcolor:
 export default function Home() {
   return (
     <Desktop_Temp childnavbar={Navbar()}>
-      <BioAbout hexcolor="#32CD32">Makanan</BioAbout>
+      <BioAbout />
     </Desktop_Temp>
   );
 }
