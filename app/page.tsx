@@ -35,7 +35,7 @@ function BioAbout() {
   const warnain: string = `flex flex-row h-3/5 bg-[#32CD32]`;
   return (
     <div className={warnain}>
-      <div className="basis-2/3 h-full bg-[#FA8072] rounded-3xl px-4 py-8 mx-4">
+      <div className="basis-2/3 bg-[#FA8072] rounded-3xl px-4 py-8 mx-4 my-6 ">
         <h3 className="mb-4">Rizal Mujahiddan</h3>
         <div>
           Data science is not a sprint, but a marathon. It requires perseverance, hard work, and
@@ -43,17 +43,28 @@ function BioAbout() {
           to learn from the best in the field.
         </div>
       </div>
-      <div className="my-auto bg-[#4B382A] rounded-full w-52 h-52 flex items-center justify-center">
-        <div className="rounded-full overflow-hidden w-full h-full">
+      <div className="basis-1/3 my-auto rounded-full w-52 h-52 flex items-center justify-center">
+        <div className="rounded-full overflow-hidden w-52 h-52">
           <Image
             src="/traveler.jpg"
             width={208}
             height={208}
             alt="Picture of the author"
-            className="object-cover w-full h-full"
+            className="object-cover rounded-full w-52 h-52"
           />
         </div>
       </div>
+    </div>
+  );
+}
+
+function Project({ hexcode }: { hexcode: string }) {
+  let jawaban: string = "flex flex-row h-2/5 bg-[";
+  jawaban += hexcode;
+  jawaban += "]";
+  return (
+    <div className={jawaban}>
+      <div>Rizal</div>
     </div>
   );
 }
@@ -62,6 +73,7 @@ export default function Home() {
   return (
     <Desktop_Temp childnavbar={Navbar()}>
       <BioAbout />
+      <Project hexcode="#32cd32" />
     </Desktop_Temp>
   );
 }
