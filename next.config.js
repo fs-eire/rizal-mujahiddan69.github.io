@@ -29,19 +29,19 @@ const nextConfig = {
           // },
           {
             from: "./node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.wasm",
-            to: "static/chunks/app",
+            to: "static/chunks/app/coba_onnx",
           },
           {
             from: "./node_modules/onnxruntime-web/dist/ort-wasm-simd.wasm",
-            to: "static/chunks/app",
+            to: "static/chunks/app/coba_onnx",
           },
           {
             from: "./node_modules/onnxruntime-web/dist/ort-wasm-threaded.wasm",
-            to: "static/chunks/app",
+            to: "static/chunks/app/coba_onnx",
           },
           {
             from: "./node_modules/onnxruntime-web/dist/ort-wasm.wasm",
-            to: "static/chunks/app",
+            to: "static/chunks/app/coba_onnx",
           },
           {
             from: "./models/dtc_cv.onnx",
@@ -67,6 +67,10 @@ const nextConfig = {
       }
     }
     // console.log(config);
+    // config.stats = 'verbose';
+    // config.infrastructureLogging = {
+    //   level: 'verbose',
+    // };
     return config;
   },
 };

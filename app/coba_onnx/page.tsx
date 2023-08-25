@@ -1,9 +1,13 @@
+"use client"
 import {
   FormControl,
   FormControlLabel,
   FormGroup,
   FormLabel,
 } from "@mui/material";
+
+
+import React, { useState, useEffect } from 'react'
 
 import * as process from 'process'
 
@@ -40,18 +44,34 @@ async function Jawaban_Model() {
   console.log("session")
 
   // ort.env.wasm.wasmPaths = '../node_modules/onnxruntime - web/dist/'
-  const session = await ort.InferenceSession.create('dtc_cv.onnx', options);
+  const session = await ort.InferenceSession.create(new URL('./dtc_cv.onnx', import.meta.url).pathname, options);
   console.log("session 1")
   console.log(session)
 
   // console.log(session1)
+  return session.inputNames[0]
 }
 
+  Jawaban_Model();
 export default function Home() {
-  // Jawaban_Model();
+  const [data, setData] = useState('loading model...');
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await Jawaban_Model()
+      setData(`model loaded. input[0]: ${data}`)
+    }
+ 
+    fetchData().catch((e) => {
+      // handle the error as needed
+      console.error('An error occurred while fetching the data: ', e)
+    })
+  }, [])
+
   return (
     <form className="rounded-3xl m-4 p-4 bg-emerald-500" action="/jalankan">
       <div className="text-center p-4 size">Form</div>
+      <p>{data}</p>
       <div className="flex flex-row">
         <div className="basis-1/2">
           <div>
